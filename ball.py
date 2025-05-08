@@ -42,5 +42,7 @@ class Ball:
     def draw(self, surface):
         # Draw main ball body with muted cyan color
         pygame.draw.circle(surface, (100, 150, 255), self.rect.center, self.radius)
-        # Draw specular highlight from top-left light source
-        pygame.draw.circle(surface, (200, 220, 255), (self.rect.centerx + 10, self.rect.centery + 5), self.radius // 3)
+        # Draw smooth specular highlight gradient from top-left light source
+        pygame.draw.circle(surface, (200, 220, 255), (self.rect.centerx - 10, self.rect.centery - 10), self.radius // 2)
+        pygame.draw.circle(surface, (180, 200, 230), (self.rect.centerx - 5, self.rect.centery - 5), self.radius // 3)
+        pygame.draw.circle(surface, (160, 180, 210), (self.rect.centerx, self.rect.centery), self.radius // 4)
