@@ -56,17 +56,13 @@ class Game:
         level_text = self.font.render(f"Level: {self.level}", True, (255, 255, 255))
         self.screen.surface.blit(level_text, (SCREEN_WIDTH // 2 - level_text.get_width() // 2, 10))
 
-        if self.game_over:
-            game_over_text = self.font.render(f"Game Over\nScore: {self.score}", True, (255, 255, 255))
-            self.screen.surface.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, 10))
-
         self.screen.update()
 
     def check_game_over(self):
         if self.ball.rect.top > SCREEN_HEIGHT:
             self.lives -= 1
             if self.lives <= 0:
-                self.game_over = True
+                self.running=False
             self.ball.reset()
 
         if self.bricks.count == 0:
