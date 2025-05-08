@@ -40,4 +40,7 @@ class Ball:
         return score
 
     def draw(self, surface):
-        pygame.draw.circle(surface, (255, 255, 255), self.rect.center, self.radius)
+        # Draw main ball body with muted cyan color
+        pygame.draw.circle(surface, (100, 150, 255), self.rect.center, self.radius)
+        # Draw specular highlight from top-left light source
+        pygame.draw.circle(surface, (200, 220, 255), (self.rect.centerx + 10, self.rect.centery + 5), self.radius // 3)
