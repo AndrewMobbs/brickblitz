@@ -1,5 +1,5 @@
 import pygame
-from utils import BAT_WIDTH, BAT_HEIGHT, BAT_SPEED, SCREEN_WIDTH
+from utils import BAT_WIDTH, BAT_HEIGHT, BAT_SPEED, SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Bat:
     def __init__(self):
