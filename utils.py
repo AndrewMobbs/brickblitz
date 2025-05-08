@@ -18,16 +18,16 @@ BRICK_ROWS = 5
 BRICK_COLS = 10
 
 RAINBOW_COLORS = [
-    (255, 0, 0),       # Red
-    (255, 128, 0),     # Orange
-    (255, 255, 0),     # Yellow
-    (0, 255, 0),       # Green
-    (0, 0, 255),       # Blue
-    (75, 0, 130),      # Indigo
-    (148, 0, 211),     # Violet
-    (255, 165, 0),     # Orange-Red
-    (255, 20, 147),    # Deep Pink
-    (0, 255, 255),     # Cyan
-    (128, 0, 128),     # Purple
-    (255, 255, 0)      # Yellow (repeated for completeness)
+    (200, 100, 100),       # Muted Red
+    (255, 150, 100),       # Muted Orange
+    (200, 200, 100),       # Muted Yellow
+    (100, 200, 100),       # Muted Green
+    (100, 100, 200),       # Muted Blue
+    (100, 100, 150),       # Muted Indigo
+    (150, 100, 200),       # Muted Violet
+    (255, 180, 150),       # Muted Orange-Red
+    (200, 100, 180),       # Muted Deep Pink
+    (150, 200, 200),       # Muted Cyan
+    (150, 100, 150),       # Muted Purple
+    (200, 200, 100)        # Muted Yellow (repeated for completeness)
 ]
