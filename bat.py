@@ -19,4 +19,7 @@ class Bat:
             self.rect.x += self.speed
 
     def draw(self, surface):
-        pygame.draw.rect(surface, (255, 255, 255), self.rect)
+        # Draw main body with rounded corners
+        pygame.draw.rect(surface, self.color, self.rect, border_radius=10)
+        # Draw shading for brushed steel effect
+        pygame.draw.rect(surface, (120, 120, 120), (self.rect.x + 5, self.rect.y + 5, self.rect.width - 10, self.rect.height - 10), border_radius=5)
