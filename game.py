@@ -50,7 +50,9 @@ class Game:
 
         lives_text = self.font.render(f"Lives: {self.lives}", True, (255, 255, 255))
         self.screen.surface.blit(lives_text, (SCREEN_WIDTH - 150, 10))
-
+        
+        brick_count = self.font.render(f"Bricks: {self.bricks.count}", True, (255, 255, 255))
+        self.screen.surface.blit(brick_count, (SCREEN_WIDTH - 350, 10))
         self.screen.update()
 
     def check_game_over(self):
