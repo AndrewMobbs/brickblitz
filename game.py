@@ -36,7 +36,7 @@ class Game:
 
     def update(self):
         self.bat.update()
-        self.ball.update(self.bat, self.bricks, self.score)
+        self.score=self.ball.update(self.bat, self.bricks, self.score)
         self.check_game_over()
 
     def draw(self):
@@ -56,8 +56,6 @@ class Game:
         level_text = self.font.render(f"Level: {self.level}", True, (255, 255, 255))
         self.screen.surface.blit(level_text, (SCREEN_WIDTH // 2 - level_text.get_width() // 2, 10))
 
-        brick_count = self.font.render(f"Bricks: {self.bricks.count}", True, (255, 255, 255))
-        self.screen.surface.blit(brick_count, (SCREEN_WIDTH - 350, 10))
         self.screen.update()
 
     def check_game_over(self):
@@ -75,5 +73,5 @@ class Game:
         """Progress to the next level with increased difficulty"""
         self.level += 1
         self.bricks = Bricks(BRICK_ROWS, BRICK_COLS)
+        self.ball.speed += 1  # Increase speed
         self.ball.reset()
-        self.ball.speed *= 1.1  # Increase speed by 10%
