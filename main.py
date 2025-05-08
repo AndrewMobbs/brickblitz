@@ -1,5 +1,6 @@
 import pygame
 from game import Game
+from utils import SCREEN_WIDTH, SCREEN_HEIGHT
 
 if __name__ == "__main__":
     pygame.init()
