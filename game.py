@@ -18,6 +18,9 @@ class Game:
         self.score = 0
         self.lives = 3
 
+        # Initialize font for rendering text
+        self.font = pygame.font.SysFont(None, 36)
+
     def run(self):
         while self.running:
             self.handle_events()
@@ -40,6 +43,14 @@ class Game:
         self.bricks.draw(self.screen.surface)
         self.bat.draw(self.screen.surface)
         self.ball.draw(self.screen.surface)
+
+        # Draw score and lives text
+        score_text = self.font.render(f"Score: {self.score}", True, (255, 255, 255))
+        self.screen.surface.blit(score_text, (10, 10))
+
+        lives_text = self.font.render(f"Lives: {self.lives}", True, (255, 255, 255))
+        self.screen.surface.blit(lives_text, (SCREEN_WIDTH - 150, 10))
+
         self.screen.update()
 
     def check_game_over(self):
