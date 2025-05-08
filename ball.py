@@ -5,6 +5,7 @@ class Ball:
     def __init__(self):
         self.radius = BALL_RADIUS
         self.speed = BALL_SPEED
+        self.collision_counter = 0 # avoid being "trapped" on the bat with repeated collisions
         self.reset()
 
     def reset(self):
@@ -15,6 +16,8 @@ class Ball:
     def update(self, bat, bricks, score):
         self.rect.x += self.dx
         self.rect.y += self.dy
+        if self.collision_counter > 0:
+            self.collision_counter -= 1
 
         # Wall collisions
         if self.rect.left <= 0 or self.rect.right >= SCREEN_WIDTH:
@@ -23,8 +26,9 @@ class Ball:
             self.dy *= -1
 
         # Bat collision
-        if self.rect.colliderect(bat.rect):
+        if self.rect.colliderect(bat.rect) and self.collision_counter == 0:
             self.dy *= -1
+            self.collision_counter = 10
 
         # Brick collision
         for brick in bricks.bricks:
