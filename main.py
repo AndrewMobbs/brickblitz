@@ -44,11 +44,10 @@ if __name__ == "__main__":
     game = Game()
     game.run()
 
-    if game.game_over:
-        # Game over screen
-        font = pygame.font.SysFont("Comic Sans MS", 36)
-        game_over_lines = logo_lines + [
-            f"        Game over! You scored {game.score}        ",
-            "         Press SPACE to exit the game        "
-        ]
-        show_splash_screen(screen, font, game_over_lines)
+    # Game over screen
+    font = pygame.font.SysFont("Comic Sans MS", 36)
+    game_over_lines = logo_lines + [
+        " ","Game over!",f"You scored {game.score}",
+        "Press SPACE to exit the game"
+    ]
+    show_splash_screen(screen, font, game_over_lines)
