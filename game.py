@@ -18,6 +18,7 @@ class Game:
         self.score = 0
         self.lives = 3
         self.level = 1
+        self.lives_balls = [Ball() for _ in range(self.lives)]
 
         # Initialize font for rendering text
         self.font = pygame.font.SysFont(None, 36)
@@ -49,8 +50,13 @@ class Game:
         score_text = self.font.render(f"Score: {self.score}", True, (255, 255, 255))
         self.screen.surface.blit(score_text, (10, 10))
 
-        lives_text = self.font.render(f"Lives: {self.lives}", True, (255, 255, 255))
-        self.screen.surface.blit(lives_text, (SCREEN_WIDTH - 150, 10))
+        # Draw lives as ball icons
+        lives_label = self.font.render("Lives:", True, (255, 255, 255))
+        self.screen.surface.blit(lives_label, (SCREEN_WIDTH - 220, 10))
+        for i, ball in enumerate(self.lives_balls):
+            ball.rect.x = SCREEN_WIDTH - 180 + i * 30
+            ball.rect.y = 10
+            ball.draw(self.screen.surface)
         
         # Draw level and score
         level_text = self.font.render(f"Level: {self.level}", True, (255, 255, 255))
@@ -64,6 +70,7 @@ class Game:
             if self.lives <= 0:
                 self.running=False
             self.ball.reset()
+            self.lives_balls = [Ball() for _ in range(self.lives)]
 
         if self.bricks.count == 0:
             self.next_level()
