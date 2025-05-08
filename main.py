@@ -27,12 +27,14 @@ if __name__ == "__main__":
 
     # Start screen
     font = pygame.font.SysFont("Comic Sans MS", 36)
-    start_lines = [
+    logo_lines = [
         "    _____           _       _     _          ",
         "   /  ___|         | |     | |   (_)         ",
         "   \\ `--.  ___  ___| |__   | |    _  _ __ ___ ",
         "    `--. \\/ _ \\/ __| '_ \\  | |   | || '_ ` _ \\",
         "  .___/\\/\\/\\_\\___|_| |_| |_|   |_|_|_| |_| |_/",
+    ]
+    start_lines = logo_lines + [
         "                                              ",
         "         Press SPACE to start the game        "
     ]
@@ -45,12 +47,7 @@ if __name__ == "__main__":
     if game.game_over:
         # Game over screen
         font = pygame.font.SysFont("Comic Sans MS", 36)
-        game_over_lines = [
-            "    _____           _       _     _          ",
-            "   /  ___|         | |     | |   (_)         ",
-            "   \\ `--.  ___  ___| |__   | |    _  _ __ ___ ",
-            "    `--. \\/ _ \\/ __| '_ \\  | |   | || '_ ` _ \\",
-            "  .___/\\/\\/\\_\\___|_| |_| |_|   |_|_|_| |_| |_/",
+        game_over_lines = logo_lines + [
             f"        Game over! You scored {game.score}        ",
             "         Press SPACE to exit the game        "
         ]
