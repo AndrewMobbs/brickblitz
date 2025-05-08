@@ -10,6 +10,7 @@ class Bat:
 
     def reset(self):
         self.rect = pygame.Rect(SCREEN_WIDTH // 2 - self.width // 2, SCREEN_HEIGHT - self.height - 10, self.width, self.height)
+        self.color = (150, 150, 150)  # Steel gray
 
     def update(self):
         keys = pygame.key.get_pressed()
