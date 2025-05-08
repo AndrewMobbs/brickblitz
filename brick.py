@@ -1,6 +1,6 @@
 import pygame
 import random
-from utils import BRICK_WIDTH, BRICK_HEIGHT, BRICK_PADDING, BRICK_ROWS, BRICK_COLS, SCREEN_WIDTH, SCREEN_HEIGHT
+from utils import BRICK_WIDTH, BRICK_HEIGHT, BRICK_PADDING, BRICK_ROWS, BRICK_COLS, SCREEN_WIDTH, SCREEN_HEIGHT, RAINBOW_COLORS
 
 class Bricks:
     def __init__(self, rows, cols):
