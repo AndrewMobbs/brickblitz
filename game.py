@@ -51,3 +51,4 @@ class Game:
 
         if self.bricks.count == 0:
             self.running = False
+            return  # Exit immediately to prevent further updates
