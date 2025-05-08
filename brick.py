@@ -19,7 +19,10 @@ class Bricks:
                 brick_y = row * (BRICK_HEIGHT + BRICK_PADDING) + 50
                 rect = pygame.Rect(brick_x, brick_y, BRICK_WIDTH, BRICK_HEIGHT)
                 color = random.choice(RAINBOW_COLORS)
-                bricks.append({'rect': rect, 'color': color})
+
+                # Only add brick if it's within screen bounds
+                if rect.right <= SCREEN_WIDTH:
+                    bricks.append({'rect': rect, 'color': color})
         return bricks
 
     def draw(self, surface):
