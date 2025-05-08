@@ -28,7 +28,7 @@ class Ball:
 
         # Brick collision
         for brick in bricks.bricks:
-            if self.rect.colliderect(brick.rect):
+            if self.rect.colliderect(brick['rect']):
                 bricks.remove(brick)
                 score += 1
                 self.dy *= -1
