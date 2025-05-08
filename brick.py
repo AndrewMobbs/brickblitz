@@ -11,18 +11,32 @@ class Bricks:
 
     def create_bricks(self):
         bricks = []
+        prev_row_colors = None
         for row in range(self.rows):
             # Offset every other row for stretcher bond pattern
             offset = BRICK_WIDTH // 2 if row % 2 == 0 else 0
+            current_row_colors = []
             for col in range(self.cols):
                 brick_x = col * (BRICK_WIDTH + BRICK_PADDING) + offset
                 brick_y = row * (BRICK_HEIGHT + BRICK_PADDING) + 50
                 rect = pygame.Rect(brick_x, brick_y, BRICK_WIDTH, BRICK_HEIGHT)
-                color = random.choice(RAINBOW_COLORS)
-
-                # Only add brick if it's within screen bounds
+                
+                # Determine forbidden colors
+                forbidden_colors = set()
+                if col > 0:
+                    forbidden_colors.add(current_row_colors[-1])
+                if row > 0:
+                    forbidden_colors.add(prev_row_colors[col])
+                
+                # Choose a color not in forbidden_colors
+                color = None
+                while color is None or color in forbidden_colors:
+                    color = random.choice(RAINBOW_COLORS)
+                
+                current_row_colors.append(color)
                 if rect.right <= SCREEN_WIDTH:
                     bricks.append({'rect': rect, 'color': color})
+            prev_row_colors = current_row_colors
         return bricks
 
     def draw(self, surface):
