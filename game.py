@@ -3,6 +3,7 @@ from ball import Ball
 from bat import Bat
 from brick import Bricks
 from screen import Screen
+from time import sleep
 from utils import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, BRICK_ROWS, BRICK_COLS
 
 class Game:
@@ -54,8 +55,8 @@ class Game:
         lives_label = self.font.render("Lives:", True, (255, 255, 255))
         self.screen.surface.blit(lives_label, (SCREEN_WIDTH - 220, 10))
         for i, ball in enumerate(self.lives_balls):
-            ball.rect.x = SCREEN_WIDTH - 180 + i * 30
-            ball.rect.y = 10
+            ball.rect.x = SCREEN_WIDTH - 140 + i * 30
+            ball.rect.y = 12
             ball.draw(self.screen.surface)
         
         # Draw level and score
@@ -70,6 +71,7 @@ class Game:
             if self.lives <= 0:
                 self.running=False
             self.ball.reset()
+            sleep(0.25)
             self.lives_balls = [Ball() for _ in range(self.lives)]
 
         if self.bricks.count == 0:
