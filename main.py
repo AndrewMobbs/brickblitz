@@ -2,6 +2,18 @@ import pygame
 from game import Game
 from utils import SCREEN_WIDTH, SCREEN_HEIGHT
 
+def logo_font():
+    """Attempt to find a modern monospaced font for the logo"""
+    fonts=pygame.font.get_fonts()
+    for i in ["liberationmono","consolas","lucidasanstypewriter"]:
+        if i in fonts:
+            return i
+    # Couldn't find a preferred font, YOLO something
+    for i in fonts:
+        if "mono" in i or "typewriter" in i:
+            return i
+    return None
+
 def show_splash_screen(screen, message_lines):
     """Display a splash screen with given message lines, waiting for space to continue."""
     LOGO_LINES = [
@@ -17,7 +29,7 @@ def show_splash_screen(screen, message_lines):
     running = True
     while running:
         screen.fill((0, 0, 0))
-        font = pygame.font.SysFont("liberationmono", 12)
+        font = pygame.font.SysFont(logo_font(), 12)
         for i, line in enumerate(LOGO_LINES):
             text = font.render(line, True, logo_color[i])
             screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, 20 + i*12))        
