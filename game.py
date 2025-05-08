@@ -17,6 +17,7 @@ class Game:
 
         self.score = 0
         self.lives = 3
+        self.level = 1
 
         # Initialize font for rendering text
         self.font = pygame.font.SysFont(None, 36)
