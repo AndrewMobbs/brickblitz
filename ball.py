@@ -33,10 +33,7 @@ class Ball:
                 score += 1
                 self.dy *= -1
                 break
-
-        # Floor collision
-        if self.rect.top > SCREEN_HEIGHT:
-            self.reset()
+        return score
 
     def draw(self, surface):
         pygame.draw.circle(surface, (255, 255, 255), self.rect.center, self.radius)
