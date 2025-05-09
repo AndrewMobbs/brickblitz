@@ -4,14 +4,13 @@ from bat import Bat
 from brick import Bricks
 from screen import Screen
 from time import sleep
-from utils import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, BRICK_ROWS, BRICK_COLS
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, BRICK_ROWS, BRICK_COLS
 
 class Game:
-    def __init__(self):
-        self.screen = Screen()
+    def __init__(self,screen):
         self.clock = pygame.time.Clock()
         self.running = True
-
+        self.screen=screen
         self.ball = Ball()
         self.bat = Bat()
         self.bricks = Bricks(BRICK_ROWS, BRICK_COLS)

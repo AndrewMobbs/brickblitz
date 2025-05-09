@@ -1,6 +1,6 @@
 import pygame
 import random
-from utils import BRICK_WIDTH, BRICK_HEIGHT, BRICK_PADDING, BRICK_ROWS, BRICK_COLS, SCREEN_WIDTH, SCREEN_HEIGHT, RAINBOW_COLORS
+from constants import BRICK_WIDTH, BRICK_HEIGHT, BRICK_PADDING, SCREEN_WIDTH, BRICK_COLORS
 
 class Bricks:
     def __init__(self, rows, cols):
@@ -31,7 +31,7 @@ class Bricks:
                 # Choose a color not in forbidden_colors
                 color = None
                 while color is None or color in forbidden_colors:
-                    color = random.choice(RAINBOW_COLORS)
+                    color = random.choice(BRICK_COLORS)
                 
                 current_row_colors.append(color)
                 if rect.right <= SCREEN_WIDTH:

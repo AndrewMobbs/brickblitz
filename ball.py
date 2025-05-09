@@ -1,12 +1,35 @@
 import pygame
-from utils import BALL_RADIUS, BALL_SPEED, SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import BALL_RADIUS, BALL_SPEED, SCREEN_WIDTH, SCREEN_HEIGHT, BALL_COLORS
 
 class Ball:
     def __init__(self):
         self.radius = BALL_RADIUS
         self.speed = BALL_SPEED
         self.collision_counter = 0 # avoid being "trapped" on the bat with repeated collisions
+        self.ball_surface=self._pre_render_ball()
         self.reset()
+        
+    def _pre_render_ball(self):
+        # Create a transparent surface for the ball
+        ball_surface = pygame.Surface((self.radius * 2, self.radius * 2), pygame.SRCALPHA)
+        ball_center_on_surface = (self.radius, self.radius)
+
+        # Draw main ball body
+        pygame.draw.circle(ball_surface, BALL_COLORS[0], ball_center_on_surface, self.radius)
+
+        # Draw smooth specular highlight gradient
+        # Adjusting center for the ball_surface (origin is 0,0 for this surface)
+        highlight_base_x = ball_center_on_surface[0]
+        highlight_base_y = ball_center_on_surface[1]
+
+        for i in range(2, 5):
+            offset_x = self.radius // (12 - 2 * i)
+            offset_y = self.radius // (12 - 2 * i)
+            highlight_radius = self.radius // i
+            pygame.draw.circle(ball_surface, BALL_COLORS[i-1],
+                               (highlight_base_x - offset_x, highlight_base_y - offset_y),
+                               highlight_radius)
+        return ball_surface
 
     def reset(self):
         self.rect = pygame.Rect(SCREEN_WIDTH // 2 - self.radius, SCREEN_HEIGHT // 2 - self.radius, self.radius * 2, self.radius * 2)
@@ -40,11 +63,5 @@ class Ball:
         return score
 
     def draw(self, surface):
-        # Draw main ball body with muted cyan color
-        pygame.draw.circle(surface, (100, 150, 255), self.rect.center, self.radius)
-        # Draw smooth specular highlight gradient from top-left light source
-        pygame.draw.circle(surface, (133,173,255), (self.rect.centerx - self.radius // 8, self.rect.centery - self.radius // 8), self.radius // 2)
-        pygame.draw.circle(surface, (167,197,255), (self.rect.centerx - self.radius // 6, self.rect.centery - self.radius // 6), self.radius // 3)
-        pygame.draw.circle(surface, (200,220,255), (self.rect.centerx - self.radius // 4, self.rect.centery - self.radius // 4), self.radius // 4)
-        
-        
+        surface.blit(self.ball_surface, self.rect.topleft)
+
